@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="lucide-icons.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("VOEDbj_8P-JmYzS0U");
+        })();
+      </script>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs correspond to the service and template you created
+            const serviceID = 'service_zhum4dn';
+            const templateID = 'template_8iauyas';
+            
+            // Send the email
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert('Email sent successfully!');
+                }, (err) => {
+                    alert('Failed to send email. Error: ' + JSON.stringify(err));
+                });
+        });
+      </script>
+      
+
+
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 w-full border-b bg-background">
+            <div class="container flex h-16 items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <button id="mobile-menu-button" class="md:hidden button button-outline button-icon">
+                        <i class="icon icon-menu"></i>
+                        <span class="sr-only">Toggle menu</span>
+                    </button>
+                    <a href="dashboard.html" class="flex items-center gap-2 font-bold text-xl">
+                        <span class="text-primary">Productivity</span>
+                        <span class="hidden sm:inline">Assistant</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="button button-outline button-icon">
+                        <i src="download.png" class="icon icon-bell"></i>
+                        <span class="sr-only">Notifications</span>
+                    </button>
+                    <div class="avatar">
+                        <img src="image.png" alt="User" class="avatar-image">
+                        <div class="avatar-fallback">JD</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside id="sidebar" class="hidden md:flex w-64 flex-col border-r p-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="dashboard.html" class="nav-item">
+                        <i class="icon icon-layout-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="dashboard-email.html" class="nav-item">
+                        <i class="icon icon-mail"></i>
+                        Email
+                    </a>
+                    <a href="dashboard-tasks.html" class="nav-item">
+                        <i class="icon icon-check-square"></i>
+                        Tasks
+                    </a>
+                    <a href="dashboard-calendar.html" class="nav-item">
+                        <i class="icon icon-calendar"></i>
+                        Calendar
+                    </a>
+                    <a href="dashboard-notifications.html" class="nav-item">
+                        <i class="icon icon-bell"></i>
+                        Notifications
+                    </a>
+                    <a href="dashboard-settings.html" class="nav-item active">
+                        <i class="icon icon-settings"></i>
+                        Settings
+                    </a>
+                </nav>
+                <div class="mt-auto pt-4">
+                    <button class="button button-outline w-full justify-start gap-3 text-muted-foreground">
+                        <i class="icon icon-log-out"></i>
+                        Log out
+                    </button>
+                </div>
+            </aside>
+            <main class="flex-1">
+                <div class="container py-6 space-y-6">
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tight">Settings</h1>
+                        <p class="text-muted-foreground">Manage your account settings and preferences</p>
+                    </div>
+
+                    <div class="tabs">
+                        <div class="tabs-list grid grid-cols-2 md:grid-cols-5 lg:w-[600px]">
+                            <button class="tabs-trigger active" data-tab="profile">Profile</button>
+                            <button class="tabs-trigger" data-tab="account">Account</button>
+                            <button class="tabs-trigger" data-tab="notifications">Notifications</button>
+                            <button class="tabs-trigger" data-tab="integrations">Integrations</button>
+                            <button class="tabs-trigger" data-tab="billing">Billing</button>
+                        </div>
+
+                        <div class="tabs-content space-y-4">
+                            <div class="tab-panel active" id="profile-panel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Profile</h3>
+                                        <p class="card-description">Manage your public profile information</p>
+                                    </div>
+                                    <div class="card-content space-y-6">
+                                        <div class="flex flex-col md:flex-row gap-6">
+                                            <div class="flex flex-col items-center gap-4">
+                                                <div class="avatar h-24 w-24">
+                                                    <img src="image.png" alt="User" class="avatar-image">
+                                                    <div class="avatar-fallback">JD</div>
+                                                </div>
+                                                <button class="button button-outline button-sm">
+                                                    <i class="icon icon-upload mr-2"></i>
+                                                    Change Photo
+                                                </button>
+                                            </div>
+                                            <div class="space-y-4 flex-1">
+                                                <div class="grid gap-2">
+                                                    <label for="name" class="block font-medium">Full Name</label>
+                                                    <input type="text" id="name" placeholder="Name" class="w-full py-2 px-3 border rounded-md">
+                                                </div>
+                                                <div class="grid gap-2">
+                                                    <label for="email" class="block font-medium">Email</label>
+                                                    <input type="email" id="email" placeholder="rohit@example.com" class="w-full py-2 px-3 border rounded-md">
+                                                </div>
+                                                <div class="grid gap-2">
+                                                    <label for="bio" class="block font-medium">Bio</label>
+                                                    <textarea id="bio" rows="4" class="w-full py-2 px-3 border rounded-md"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid gap-2">
+                                            <label for="timezone" class="block font-medium">Time Zone</label>
+                                            <select id="timezone" class="w-full py-2 px-3 border rounded-md">
+                                                <option value="America/New_York" selected>Eastern Time (ET)</option>
+                                                <option value="America/Chicago">Central Time (CT)</option>
+                                                <option value="America/Denver">Mountain Time (MT)</option>
+                                                <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                                                <option value="Europe/London">Greenwich Mean Time (GMT)</option>
+                                                <option value="Europe/Paris">Central European Time (CET)</option>
+                                                <option value="Asia/Kolkata">Indian standard time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="button button-outline button-sm">
+                                            <i class="icon icon-upload mr-2"></i>
+                                            Save Changes
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-panel" id="account-panel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Account Settings</h3>
+                                        <p class="card-description">Manage your account preferences and security</p>
+                                    </div>
+                                    <div class="card-content space-y-4">
+                                        <div class="space-y-4">
+                                            <h3 class="text-lg font-medium">Password</h3>
+                                            <div class="grid gap-2">
+                                                <label for="current-password" class="block font-medium">Current Password</label>
+                                                <input type="password" id="current-password" class="w-full py-2 px-3 border rounded-md">
+                                            </div>
+                                            <div class="grid gap-2">
+                                                <label for="new-password" class="block font-medium">New Password</label>
+                                                <input type="password" id="new-password" class="w-full py-2 px-3 border rounded-md">
+                                            </div>
+                                            <div class="grid gap-2">
+                                                <label for="confirm-password" class="block font-medium">Confirm New Password</label>
+                                                <input type="password" id="confirm-password" class="w-full py-2 px-3 border rounded-md">
+                                            </div>
+                                            <button class="button">Update Password</button>
+                                        </div>
+
+                                        <div class="space-y-4 pt-4 border-t">
+                                            <h3 class="text-lg font-medium">Two-Factor Authentication</h3>
+                                            <div class="flex items-center justify-between">
+                                                <div class="space-y-0.5">
+                                                    <h4 class="font-medium">Enable 2FA</h4>
+                                                    <p class="text-sm text-muted-foreground">Add an extra layer of security to your account</p>
+                                                </div>
+                                                <label class="switch">
+                                                    <input type="checkbox">
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                            <button class="button button-outline">Set Up Two-Factor Authentication</button>
+                                        </div>
+
+                                        <div class="space-y-4 pt-4 border-t">
+                                            <h3 class="text-lg font-medium">Sessions</h3>
+                                            <div class="space-y-2">
+                                                <div class="flex items-center justify-between p-2 border rounded-md">
+                                                    <div>
+                                                        <p class="font-medium">Current Session</p>
+                                                        <p class="text-sm text-muted-foreground">Chrome on Windows • New York, USA</p>
+                                                    </div>
+                                                    <span class="badge badge-outline text-green-500 border-green-500">
+                                                        Active
+                                                    </span>
+                                                </div>
+                                                <div class="flex items-center justify-between p-2 border rounded-md">
+                                                    <div>
+                                                        <p class="font-medium">Previous Session</p>
+                                                        <p class="text-sm text-muted-foreground">Safari on iPhone • New York, USA</p>
+                                                    </div>
+                                                    <button class="button button-outline button-sm">
+                                                        Log Out
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <button class="button button-outline w-full">
+                                                Log Out of All Sessions
+                                            </button>
+                                        </div>
+
+                                        <div class="space-y-4 pt-4 border-t">
+                                            <h3 class="text-lg font-medium text-red-500">Danger Zone</h3>
+                                            <p class="text-sm text-muted-foreground">
+                                                Once you delete your account, there is no going back. Please be certain.
+                                            </p>
+                                            <button class="button button-destructive">Delete Account</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-container">
+            <div class="flex items-center gap-2 font-bold text-xl mb-8">
+                <span class="text-primary">Productivity</span>
+                <span>Assistant</span>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="icon icon-layout-dashboard"></i>
+                    Dashboard
+                </a>
+                <a href="dashboard-email.html" class="nav-item">
+                    <i class="icon icon-mail"></i>
+                    Email
+                </a>
+                <a href="dashboard-tasks.html" class="nav-item">
+                    <i class="icon icon-check-square"></i>
+                    Tasks
+                </a>
+                <a href="dashboard-calendar.html" class="nav-item">
+                    <i class="icon icon-calendar"></i>
+                    Calendar
+                </a>
+                <a href="dashboard-notifications.html" class="nav-item">
+                    <i class="icon icon-bell"></i>
+                    Notifications
+                </a>
+                <a href="dashboard-settings.html" class="nav-item active">
+                    <i class="icon icon-settings"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

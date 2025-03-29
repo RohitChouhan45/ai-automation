@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email - Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="lucide-icons.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("VOEDbj_8P-JmYzS0U");
+        })();
+      </script> 
+      
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 w-full border-b bg-background">
+            <div class="container flex h-16 items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <button id="mobile-menu-button" class="md:hidden button button-outline button-icon">
+                        <i class="icon icon-menu"></i>
+                        <span class="sr-only">Toggle menu</span>
+                    </button>
+                    <a href="dashboard.html" class="flex items-center gap-2 font-bold text-xl">
+                        <span class="text-primary">Productivity</span>
+                        <span class="hidden sm:inline">Assistant</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="button button-outline button-icon">
+                        <i src="download.png" class="icon icon-bell"></i>
+                        <span class="sr-only">Notifications</span>
+                    </button>
+                    <div class="avatar">
+                        <img src="image.png" alt="User" class="avatar-image">
+                        <div class="avatar-fallback">JD</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside id="sidebar" class="hidden md:flex w-64 flex-col border-r p-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="dashboard.html" class="nav-item">
+                        <i class="icon icon-layout-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="dashboard-email.html" class="nav-item active">
+                        <i class="icon icon-mail"></i>
+                        Email
+                    </a>
+                    <a href="dashboard-tasks.html" class="nav-item">
+                        <i class="icon icon-check-square"></i>
+                        Tasks
+                    </a>
+                    <a href="dashboard-calendar.html" class="nav-item">
+                        <i class="icon icon-calendar"></i>
+                        Calendar
+                    </a>
+                    <a href="dashboard-notifications.html" class="nav-item">
+                        <i class="icon icon-bell"></i>
+                        Notifications
+                    </a>
+                    <a href="dashboard-settings.html" class="nav-item">
+                        <i class="icon icon-settings"></i>
+                        Settings
+                    </a>
+                </nav>
+                <div class="mt-auto pt-4">
+                    <button class="button button-outline w-full justify-start gap-3 text-muted-foreground">
+                        <i class="icon icon-log-out"></i>
+                        Log out
+                    </button>
+                </div>
+            </aside>
+            <main class="flex-1">
+                <div class="container py-6 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h1 class="text-3xl font-bold tracking-tight">Email</h1>
+                        <form id="contact-form">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="name">Subject:</label>
+                            <input type="text" id="name" name="text" required>
+                            
+                            <label for="message">Message:</label>
+                            <input id="message" name="message" required></textarea>
+                            
+                            <button type="submit" class="button icon icon-plus mr-2">Compose</button>
+                          </form>
+                        
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <div class="relative flex-1">
+                            <i class="icon icon-search absolute left-2.5 top-2.5 text-muted-foreground"></i>
+                            <input type="search" placeholder="Search emails..." class="w-full pl-8 py-2 border rounded-md">
+                        </div>
+                        <button class="button button-outline button-icon">
+                            <i class="icon icon-refresh-cw"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="card md:col-span-1">
+                            <div class="card-header p-4">
+                                <h3 class="card-title text-lg">Folders</h3>
+                            </div>
+                            <div class="card-content p-2">
+                                <div class="space-y-1">
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center justify-between w-full">
+                                            <span>Inbox</span>
+                                            <span class="badge">12</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center justify-between w-full">
+                                            <span>Starred</span>
+                                            <span class="badge badge-outline">2</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center justify-between w-full">
+                                            <span>Sent</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center justify-between w-full">
+                                            <span>Drafts</span>
+                                            <span class="badge badge-outline">3</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center justify-between w-full">
+                                            <span>Spam</span>
+                                            <span class="badge badge-outline">5</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center justify-between w-full">
+                                            <span>Trash</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-header p-4 pt-0">
+                                <h3 class="card-title text-lg">Categories</h3>
+                            </div>
+                            <div class="card-content p-2">
+                                <div class="space-y-1">
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                                            <span>Work</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                            <span>Personal</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                            <span>Social</span>
+                                        </div>
+                                    </button>
+                                    <button class="button button-ghost w-full justify-start">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <span>Shopping</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card md:col-span-3">
+                            <div class="card-header p-4">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="card-title text-lg">Inbox</h3>
+                                    <div class="flex items-center gap-2">
+                                        <button class="button button-outline button-sm">
+                                            <i class="icon icon-archive mr-2"></i>
+                                            Archive
+                                        </button>
+                                        <button class="button button-outline button-sm">
+                                            <i class="icon icon-trash mr-2"></i>
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content p-0">
+                                <div class="divide-y">
+                                    <div class="flex items-start p-4 hover:bg-muted/50 cursor-pointer bg-primary/5">
+                                        <div class="flex items-center gap-3 mr-3">
+                                            <input type="checkbox" class="checkbox">
+                                            <i class="icon icon-star text-yellow-400 fill-yellow-400"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <div class="avatar h-6 w-6">
+                                                    <div class="avatar-fallback">SJ</div>
+                                                </div>
+                                                <p class="font-semibold truncate">Sarah Johnson</p>
+                                                <span class="text-xs text-muted-foreground ml-auto">10:32 AM</span>
+                                            </div>
+                                            <h3 class="text-sm font-semibold truncate">Project Update: Q3 Goals</h3>
+                                            <p class="text-sm text-muted-foreground truncate">The team has made significant progress on the Q3 goals. Let's schedule a meeting to discuss next steps and timeline adjustments.</p>
+                                            <div class="mt-2">
+                                                <span class="badge badge-outline text-xs">work</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start p-4 hover:bg-muted/50 cursor-pointer">
+                                        <div class="flex items-center gap-3 mr-3">
+                                            <input type="checkbox" class="checkbox">
+                                            <i class="icon icon-star text-muted-foreground"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <div class="avatar h-6 w-6">
+                                                    <div class="avatar-fallback">MC</div>
+                                                </div>
+                                                <p class="font-medium truncate">Michael Chen</p>
+                                                <span class="text-xs text-muted-foreground ml-auto">Yesterday</span>
+                                            </div>
+                                            <h3 class="text-sm truncate">Client Meeting Confirmation</h3>
+                                            <p class="text-sm text-muted-foreground truncate">I'm writing to confirm our meeting scheduled for tomorrow at 2 PM. Please let me know if you need to reschedule.</p>
+                                            <div class="mt-2">
+                                                <span class="badge badge-outline text-xs">work</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start p-4 hover:bg-muted/50 cursor-pointer">
+                                        <div class="flex items-center gap-3 mr-3">
+                                            <input type="checkbox" class="checkbox">
+                                            <i class="icon icon-star text-muted-foreground"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <div class="avatar h-6 w-6">
+                                                    <div class="avatar-fallback">PT</div>
+                                                </div>
+                                                <p class="font-medium truncate">Product Team</p>
+                                                <span class="text-xs text-muted-foreground ml-auto">Yesterday</span>
+                                            </div>
+                                            <h3 class="text-sm truncate">New Feature Request</h3>
+                                            <p class="text-sm text-muted-foreground truncate">We've received several requests for a new feature that would allow users to customize their dashboard. What do you think?</p>
+                                            <div class="mt-2">
+                                                <span class="badge badge-outline text-xs">work</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start p-4 hover:bg-muted/50 cursor-pointer">
+                                        <div class="flex items-center gap-3 mr-3">
+                                            <input type="checkbox" class="checkbox">
+                                            <i class="icon icon-star text-muted-foreground"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <div class="avatar h-6 w-6">
+                                                    <div class="avatar-fallback">AM</div>
+                                                </div>
+                                                <p class="font-medium truncate">Amazon</p>
+                                                <span class="text-xs text-muted-foreground ml-auto">Mar 12</span>
+                                            </div>
+                                            <h3 class="text-sm truncate">Your Order Has Shipped</h3>
+                                            <p class="text-sm text-muted-foreground truncate">Your recent order #12345 has shipped and is on its way. Expected delivery date is Friday, March 15.</p>
+                                            <div class="mt-2">
+                                                <span class="badge badge-outline text-xs">shopping</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 border-t">
+                                <div class="flex items-center justify-between w-full text-sm text-muted-foreground">
+                                    <span>1-4 of 124</span>
+                                    <div class="flex items-center gap-2">
+                                        <button class="button button-ghost button-icon" disabled>
+                                            <i class="icon icon-chevron-left"></i>
+                                        </button>
+                                        <button class="button button-ghost button-icon">
+                                            <i class="icon icon-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-container">
+            <div class="flex items-center gap-2 font-bold text-xl mb-8">
+                <span class="text-primary">Productivity</span>
+                <span>Assistant</span>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="icon icon-layout-dashboard"></i>
+                    Dashboard
+                </a>
+                <a href="dashboard-email.html" class="nav-item active">
+                    <i class="icon icon-mail"></i>
+                    Email
+                </a>
+                <a href="dashboard-tasks.html" class="nav-item">
+                    <i class="icon icon-check-square"></i>
+                    Tasks
+                </a>
+                <a href="dashboard-calendar.html" class="nav-item">
+                    <i class="icon icon-calendar"></i>
+                    Calendar
+                </a>
+                <a href="dashboard-notifications.html" class="nav-item">
+                    <i class="icon icon-bell"></i>
+                    Notifications
+                </a>
+                <a href="dashboard-settings.html" class="nav-item">
+                    <i class="icon icon-settings"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs correspond to the service and template you created
+            const serviceID = 'service_zhum4dn';
+            const templateID = 'template_8iauyas';
+            
+            // Send the email
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert('Email sent successfully!');
+                }, (err) => {
+                    alert('Failed to send email. Error: ' + JSON.stringify(err));
+                });
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="lucide-icons.css">
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <header class="sticky top-0 z-50 w-full border-b bg-background">
+            <div class="container flex h-16 items-center justify-between">
+                <div class="flex items-center gap-2 font-bold text-xl">
+                    <span class="text-primary">Productivity</span>
+                    <span>Assistant</span>
+                </div>
+                <nav class="hidden md:flex gap-6">
+                    <a href="#features" class="text-muted-foreground hover:text-foreground transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-muted-foreground hover:text-foreground transition-colors">How it works</a>
+                    <a href="#pricing" class="text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a href="login.html" class="button button-outline">Log in</a>
+                    <a href="signup.html" class="button">Sign up</a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <section class="container py-24 sm:py-32">
+                <div class="flex flex-col items-center text-center gap-4 md:gap-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl md:text-6xl font-bold">Your AI-Powered Productivity Assistant</h1>
+                        <p class="text-xl text-muted-foreground max-w-[800px] mx-auto">
+                            Streamline your workflow with AI-integrated email management, smart task tracking, and intelligent
+                            scheduling in one powerful platform.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="login.html" class="button gap-2">
+                            Get Started <i class="icon icon-arrow-right"></i>
+                        </a>
+                        <a href="#features" class="button button-outline">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="container py-24 sm:py-32 border-t">
+                <div class="grid gap-12 md:gap-16">
+                    <div class="space-y-4 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold">Powerful Features</h2>
+                        <p class="text-muted-foreground md:text-xl max-w-[800px] mx-auto">
+                            Our AI-powered assistant helps you manage your work and stay productive.
+                        </p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="flex flex-col items-center text-center gap-2 p-6 border rounded-lg">
+                            <div class="p-2 bg-primary-10 rounded-full">
+                                <i class="icon icon-mail text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Email Management</h3>
+                            <p class="text-muted-foreground">
+                                AI reads, categorizes, and auto-replies to your emails, saving you hours each week.
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center text-center gap-2 p-6 border rounded-lg">
+                            <div class="p-2 bg-primary-10 rounded-full">
+                                <i class="icon icon-check-square text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Task Management</h3>
+                            <p class="text-muted-foreground">
+                                Create, update, and track tasks with AI-powered prioritization and reminders.
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center text-center gap-2 p-6 border rounded-lg">
+                            <div class="p-2 bg-primary-10 rounded-full">
+                                <i class="icon icon-calendar text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Smart Scheduling</h3>
+                            <p class="text-muted-foreground">
+                                Sync with Google Calendar for intelligent scheduling and meeting management.
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center text-center gap-2 p-6 border rounded-lg">
+                            <div class="p-2 bg-primary-10 rounded-full">
+                                <i class="icon icon-bell text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Real-time Notifications</h3>
+                            <p class="text-muted-foreground">
+                                Receive alerts for tasks, emails, and schedule changes across all your devices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" class="container py-24 sm:py-32 border-t">
+                <div class="grid gap-12 md:gap-16">
+                    <div class="space-y-4 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold">How It Works</h2>
+                        <p class="text-muted-foreground md:text-xl max-w-[800px] mx-auto">
+                            Our platform uses advanced AI to simplify your workflow in three easy steps.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-4xl font-bold text-primary">01</div>
+                            <h3 class="text-xl font-semibold">Connect Your Accounts</h3>
+                            <p class="text-muted-foreground">
+                                Link your email and calendar accounts to our secure platform with just a few clicks.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-4xl font-bold text-primary">02</div>
+                            <h3 class="text-xl font-semibold">Customize Your Preferences</h3>
+                            <p class="text-muted-foreground">
+                                Set up your email rules, task categories, and scheduling preferences.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-4xl font-bold text-primary">03</div>
+                            <h3 class="text-xl font-semibold">Let AI Do the Work</h3>
+                            <p class="text-muted-foreground">
+                                Our AI starts managing your emails, tasks, and schedule based on your preferences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+        </main>
+        <footer class="border-t py-12">
+            <div class="container flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2 font-bold text-xl">
+                    <span class="text-primary">Productivity</span>
+                    <span>Assistant</span>
+                </div>
+                <div class="text-center md:text-right text-sm text-muted-foreground">
+                    <p>© <span id="current-year"></span> Productivity Assistant. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

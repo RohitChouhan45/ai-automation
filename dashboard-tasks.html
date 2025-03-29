@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="lucide-icons.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("VOEDbj_8P-JmYzS0U");
+        })();
+      </script>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs correspond to the service and template you created
+            const serviceID = 'service_zhum4dn';
+            const templateID = 'template_8iauyas';
+            
+            // Send the email
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert('Email sent successfully!');
+                }, (err) => {
+                    alert('Failed to send email. Error: ' + JSON.stringify(err));
+                });
+        });
+      </script>
+      
+
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 w-full border-b bg-background">
+            <div class="container flex h-16 items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <button id="mobile-menu-button" class="md:hidden button button-outline button-icon">
+                        <i class="icon icon-menu"></i>
+                        <span class="sr-only">Toggle menu</span>
+                    </button>
+                    <a href="dashboard.html" class="flex items-center gap-2 font-bold text-xl">
+                        <span class="text-primary">Productivity</span>
+                        <span class="hidden sm:inline">Assistant</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="button button-outline button-icon">
+                        <i src="download.png"class="icon icon-bell"></i>
+                        <span class="sr-only">Notifications</span>
+                    </button>
+                    <div class="avatar">
+                        <img src="image.png" alt="User" class="avatar-image">
+                        <div class="avatar-fallback">JD</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside id="sidebar" class="hidden md:flex w-64 flex-col border-r p-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="dashboard.html" class="nav-item">
+                        <i class="icon icon-layout-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="dashboard-email.html" class="nav-item">
+                        <i class="icon icon-mail"></i>
+                        Email
+                    </a>
+                    <a href="dashboard-tasks.html" class="nav-item active">
+                        <i class="icon icon-check-square"></i>
+                        Tasks
+                    </a>
+                    <a href="dashboard-calendar.html" class="nav-item">
+                        <i class="icon icon-calendar"></i>
+                        Calendar
+                    </a>
+                    <a href="dashboard-notifications.html" class="nav-item">
+                        <i class="icon icon-bell"></i>
+                        Notifications
+                    </a>
+                    <a href="dashboard-settings.html" class="nav-item">
+                        <i class="icon icon-settings"></i>
+                        Settings
+                    </a>
+                </nav>
+                <div class="mt-auto pt-4">
+                    <button class="button button-outline w-full justify-start gap-3 text-muted-foreground">
+                        <i class="icon icon-log-out"></i>
+                        Log out
+                    </button>
+                </div>
+            </aside>
+            <main class="flex-1">
+                <div class="container py-6 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h1 class="text-3xl font-bold tracking-tight">Tasks</h1>
+                        <button class="button">
+                            <i class="icon icon-plus mr-2"></i> New Task
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="relative flex-1">
+                                <input 
+                                    type="text" 
+                                    placeholder="Add a new task..." 
+                                    id="new-task-input"
+                                    class="w-full py-2 px-3 border rounded-md"
+                                >
+                            </div>
+                            <button id="add-task-btn" class="button">Add Task</button>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="tabs-list w-full">
+                                <button class="tabs-trigger active" data-tab="all">All</button>
+                                <button class="tabs-trigger" data-tab="today">Today</button>
+                                <button class="tabs-trigger" data-tab="upcoming">Upcoming</button>
+                                <button class="tabs-trigger" data-tab="completed">Completed</button>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <div class="dropdown">
+                                    <button class="button button-outline button-sm dropdown-trigger">
+                                        <i class="icon icon-arrow-up-down mr-2"></i>
+                                        Filter
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-separator"></div>
+                                        <div><button class="dropdown-item">Priority</button></div>
+                                        <div><button class="dropdown-item">category</button></div>
+                                        <div><button class="dropdown-item">Due Date</button></div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown">
+                                    <button class="button button-outline button-sm dropdown-trigger">
+                                        <i class="icon icon-arrow-up-down mr-2"></i>
+                                        Sort
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-label">Sort by</div>
+                                        <div class="dropdown-separator"></div>
+                                        <div><button class="dropdown-item">Due Date</button></div>
+                                        <div><button class="dropdown-item">Priority</button></div>
+                                        <div><button class="dropdown-item">Alphabetical</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content p-0">
+                            <div class="divide-y" id="tasks-container">
+                                <div class="flex items-start p-4 hover:bg-muted/50 task-item" data-id="1">
+                                    <div class="flex items-center gap-3 mr-3">
+                                        <input type="checkbox" class="checkbox task-checkbox">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-start justify-between">
+                                            <div>
+                                                <h3 class="text-base font-medium task-title">Prepare quarterly report</h3>
+                                                <p class="text-sm text-muted-foreground mt-1">Compile data and create presentation for the quarterly review meeting</p>
+                                            </div>
+                                            <div class="dropdown">
+                                                <button class="button button-ghost button-sm button-icon dropdown-trigger">
+                                                    <i class="icon icon-more-horizontal">Edit</i>
+                                                </button>
+                                                <div class="dropdown-content">
+                                                    <button class="dropdown-item">Edit</button>
+                                                    <button class="dropdown-item">Set Priority</button>
+                                                    <button class="dropdown-item">Change Category</button>
+                                                    <div class="dropdown-separator"></div>
+                                                    <button class="dropdown-item text-red-500">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-wrap items-center gap-2 mt-3">
+                                            <div class="flex items-center gap-1 text-xs">
+                                                <i class="icon icon-calendar text-muted-foreground"></i>
+                                                <span>Mar 26</span>
+                                            </div>
+
+                                            <span class="badge badge-outline text-xs text-red-500 border-red-500">high</span>
+                                            <span class="badge badge-outline text-xs">work</span>
+                                        </div>
+
+                                        <div class="mt-3 space-y-1">
+                                            <div class="flex items-center justify-between text-xs text-muted-foreground">
+                                                <span>Progress</span>
+                                                <span>75%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start p-4 hover:bg-muted/50 task-item" data-id="2">
+                                    <div class="flex items-center gap-3 mr-3">
+                                        <input type="checkbox" class="checkbox task-checkbox">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-start justify-between">
+                                            <div>
+                                                <h3 class="text-base font-medium task-title">Review marketing strategy</h3>
+                                                <p class="text-sm text-muted-foreground mt-1">Analyze current marketing performance and suggest improvements</p>
+                                            </div>
+                                            <div class="dropdown">
+                                                <button class="button button-ghost button-sm button-icon dropdown-trigger">
+                                                    <i class="icon icon-more-horizontal">Edit</i>
+                                                </button>
+                                                <div class="dropdown-content">
+                                                    <button class="dropdown-item">Edit</button>
+                                                    <button class="dropdown-item">Set Priority</button>
+                                                    <button class="dropdown-item">Change Category</button>
+                                                    <div class="dropdown-separator"></div>
+                                                    <button class="dropdown-item text-red-500">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-wrap items-center gap-2 mt-3">
+                                            <div class="flex items-center gap-1 text-xs">
+                                                <i class="icon icon-calendar text-muted-foreground"></i>
+                                                <span>Mar 27</span>
+                                            </div>
+
+                                            <span class="badge badge-outline text-xs text-yellow-500 border-yellow-500">medium</span>
+                                            <span class="badge badge-outline text-xs">work</span>
+                                        </div>
+
+                                        <div class="mt-3 space-y-1">
+                                            <div class="flex items-center justify-between text-xs text-muted-foreground">
+                                                <span>Progress</span>
+                                                <span>30%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 30%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start p-4 hover:bg-muted/50 task-item" data-id="3">
+                                    <div class="flex items-center gap-3 mr-3">
+                                        <input type="checkbox" class="checkbox task-checkbox">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-start justify-between">
+                                            <div>
+                                                <h3 class="text-base font-medium task-title">Finalize client proposal</h3>
+                                                <p class="text-sm text-muted-foreground mt-1">Complete and send the proposal to the new client</p>
+                                            </div>
+                                            <div class="dropdown">
+                                                <button class="button button-ghost button-sm button-icon dropdown-trigger">
+                                                    <i class="icon icon-more-horizontal">Edit</i>
+                                                </button>
+                                                <div class="dropdown-content">
+                                                    <button class="dropdown-item">Edit</button>
+                                                    <button class="dropdown-item">Set Priority</button>
+                                                    <button class="dropdown-item">Change Category</button>
+                                                    <div class="dropdown-separator"></div>
+                                                    <button class="dropdown-item text-red-500">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-wrap items-center gap-2 mt-3">
+                                            <div class="flex items-center gap-1 text-xs">
+                                                <i class="icon icon-calendar text-muted-foreground"></i>
+                                                <span class="text-red-500 font-medium">Mar 26 (Overdue)</span>
+                                            </div>
+
+                                            <span class="badge badge-outline text-xs text-red-500 border-red-500">high</span>
+                                            <span class="badge badge-outline text-xs">work</span>
+                                        </div>
+
+                                        <div class="mt-3 space-y-1">
+                                            <div class="flex items-center justify-between text-xs text-muted-foreground">
+                                                <span>Progress</span>
+                                                <span>60%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer p-4 border-t">
+                            <div class="flex items-center justify-between w-full text-sm text-muted-foreground">
+                                <span>3 tasks remaining</span>
+                                <button class="button button-ghost button-sm">
+                                    Clear completed
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-container">
+            <div class="flex items-center gap-2 font-bold text-xl mb-8">
+                <span class="text-primary">Productivity</span>
+                <span>Assistant</span>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="icon icon-layout-dashboard"></i>
+                    Dashboard
+                </a>
+                <a href="dashboard-email.html" class="nav-item">
+                    <i class="icon icon-mail"></i>
+                    Email
+                </a>
+                <a href="dashboard-tasks.html" class="nav-item active">
+                    <i class="icon icon-check-square"></i>
+                    Tasks
+                </a>
+                <a href="dashboard-calendar.html" class="nav-item">
+                    <i class="icon icon-calendar"></i>
+                    Calendar
+                </a>
+                <a href="dashboard-notifications.html" class="nav-item">
+                    <i class="icon icon-bell"></i>
+                    Notifications
+                </a>
+                <a href="dashboard-settings.html" class="nav-item">
+                    <i class="icon icon-settings"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="tasks.js"></script>
+</body>
+</html>

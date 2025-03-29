@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/lucide-icons.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("VOEDbj_8P-JmYzS0U");
+        })();
+      </script>
+      
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs correspond to the service and template you created
+            const serviceID = 'service_zhum4dn';
+            const templateID = 'template_8iauyas';
+            
+            // Send the email
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert('Email sent successfully!');
+                }, (err) => {
+                    alert('Failed to send email. Error: ' + JSON.stringify(err));
+                });
+        });
+      </script>
+      
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 w-full border-b bg-background">
+            <div class="container flex h-16 items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <button id="mobile-menu-button" class="md:hidden button button-outline button-icon">
+                        <i class="icon icon-menu"></i>
+                        <span class="sr-only">Toggle menu</span>
+                    </button>
+                    <a href="dashboard.html" class="flex items-center gap-2 font-bold text-xl">
+                        <span class="text-primary">Productivity</span>
+                        <span class="hidden sm:inline">Assistant</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="button button-outline button-icon">
+                        <i src="download.png" class="icon icon-bell"></i>
+                        <span class="sr-only">Notifications</span>
+                    </button>
+                    <div class="avatar">
+                        <img src="image.png" alt="User" class="avatar-image">
+                        <div class="avatar-fallback">JD</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside id="sidebar" class="hidden md:flex w-64 flex-col border-r p-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="dashboard.html" class="nav-item active">
+                        <i class="icon icon-layout-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="dashboard-email.html" class="nav-item">
+                        <i class="icon icon-mail"></i>
+                        Email
+                    </a>
+                    <a href="dashboard-tasks.html" class="nav-item">
+                        <i class="icon icon-check-square"></i>
+                        Tasks
+                    </a>
+                    <a href="dashboard-calendar.html" class="nav-item">
+                        <i class="icon icon-calendar"></i>
+                        Calendar
+                    </a>
+                    <a href="dashboard-notifications.html" class="nav-item">
+                        <i class="icon icon-bell"></i>
+                        Notifications
+                    </a>
+                    <a href="dashboard-settings.html" class="nav-item">
+                        <i class="icon icon-settings"></i>
+                        Settings
+                    </a>
+                </nav>
+                <div class="mt-auto pt-4">
+                    <button class="button button-outline w-full justify-start gap-3 text-muted-foreground">
+                        <i class="icon icon-log-out"></i>
+                        Log out
+                    </button>
+                </div>
+            </aside>
+            <main class="flex-1">
+                <div class="container py-6 space-y-8">
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tight">Dashboard</h1>
+                        <p class="text-muted-foreground">Welcome back, John! Here's an overview of your productivity.</p>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                        <div class="card">
+                            <div class="card-header flex-row items-center justify-between space-y-0 pb-2">
+                                <h3 class="card-title text-sm font-medium">Unread Emails</h3>
+                                <i class="icon icon-mail text-muted-foreground"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="text-2xl font-bold">12</div>
+                                <p class="text-xs text-muted-foreground">3 urgent emails requiring attention</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header flex-row items-center justify-between space-y-0 pb-2">
+                                <h3 class="card-title text-sm font-medium">Pending Tasks</h3>
+                                <i class="icon icon-check-square text-muted-foreground"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="text-2xl font-bold">8</div>
+                                <p class="text-xs text-muted-foreground">2 tasks due today</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header flex-row items-center justify-between space-y-0 pb-2">
+                                <h3 class="card-title text-sm font-medium">Today's Meetings</h3>
+                                <i class="icon icon-calendar text-muted-foreground"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="text-2xl font-bold">3</div>
+                                <p class="text-xs text-muted-foreground">Next meeting in 45 minutes</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header flex-row items-center justify-between space-y-0 pb-2">
+                                <h3 class="card-title text-sm font-medium">Productivity Score</h3>
+                                <i class="icon icon-bar-chart-3 text-muted-foreground"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="text-2xl font-bold">85%</div>
+                                <p class="text-xs text-muted-foreground">+5% from last week</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tabs">
+                        <div class="tabs-list">
+                            <button class="tabs-trigger active" data-tab="tasks">Tasks</button>
+                            <button class="tabs-trigger" data-tab="emails">Emails</button>
+                            <button class="tabs-trigger" data-tab="calendar">Calendar</button>
+                        </div>
+                        <div class="tabs-content space-y-4">
+                            <div class="tab-panel active" id="tasks-panel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Priority Tasks</h3>
+                                        <p class="card-description">Your most important tasks for today</p>
+                                    </div>
+                                    <div class="card-content space-y-4">
+                                        <div class="space-y-4">
+                                            <div class="flex items-start justify-between">
+                                                <div>
+                                                    <p class="font-medium">Prepare quarterly report</p>
+                                                    <p class="text-sm text-muted-foreground">Due in 3 hours</p>
+                                                </div>
+                                                <button class="button button-outline button-sm">
+                                                    Complete
+                                                </button>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div class="flex items-start justify-between">
+                                                <div>
+                                                    <p class="font-medium">Review marketing strategy</p>
+                                                    <p class="text-sm text-muted-foreground">Due tomorrow</p>
+                                                </div>
+                                                <button class="button button-outline button-sm">
+                                                    Complete
+                                                </button>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 30%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div class="flex items-start justify-between">
+                                                <div>
+                                                    <p class="font-medium">Finalize client proposal</p>
+                                                    <p class="text-sm text-muted-foreground">Due today</p>
+                                                </div>
+                                                <button class="button button-outline button-sm">
+                                                    Complete
+                                                </button>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+                                        <button class="button button-outline w-full">
+                                            View all tasks
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-container">
+            <div class="flex items-center gap-2 font-bold text-xl mb-8">
+                <span class="text-primary">Productivity</span>
+                <span>Assistant</span>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="icon icon-layout-dashboard"></i>
+                    Dashboard
+                </a>
+                <a href="dashboard-email.html" class="nav-item">
+                    <i class="icon icon-mail"></i>
+                    Email
+                </a>
+                <a href="dashboard-tasks.html" class="nav-item">
+                    <i class="icon icon-check-square"></i>
+                    Tasks
+                </a>
+                <a href="dashboard-calendar.html" class="nav-item">
+                    <i class="icon icon-calendar"></i>
+                    Calendar
+                </a>
+                <a href="dashboard-notifications.html" class="nav-item">
+                    <i class="icon icon-bell"></i>
+                    Notifications
+                </a>
+                <a href="dashboard-settings.html" class="nav-item">
+                    <i class="icon icon-settings"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

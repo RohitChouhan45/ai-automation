@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Productivity Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="lucide-icons.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("VOEDbj_8P-JmYzS0U");
+        })();
+      </script>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // These IDs correspond to the service and template you created
+            const serviceID = 'service_zhum4dn';
+            const templateID = 'template_8iauyas';
+            
+            // Send the email
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert('Email sent successfully!');
+                }, (err) => {
+                    alert('Failed to send email. Error: ' + JSON.stringify(err));
+                });
+        });
+      </script>
+      
+      
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 w-full border-b bg-background">
+            <div class="container flex h-16 items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <button id="mobile-menu-button" class="md:hidden button button-outline button-icon">
+                        <i class="icon icon-menu"></i>
+                        <span class="sr-only">Toggle menu</span>
+                    </button>
+                    <a href="dashboard.html" class="flex items-center gap-2 font-bold text-xl">
+                        <span class="text-primary">Productivity</span>
+                        <span class="hidden sm:inline">Assistant</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="button button-outline button-icon">
+                        <i src="download.png" class="icon icon-bell"></i>
+                        <span class="sr-only">Notifications</span>
+                    </button>
+                    <div class="avatar">
+                        <img src="image.png" alt="User" class="avatar-image">
+                        <div class="avatar-fallback">JD</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside id="sidebar" class="hidden md:flex w-64 flex-col border-r p-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="dashboard.html" class="nav-item">
+                        <i class="icon icon-layout-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="dashboard-email.html" class="nav-item">
+                        <i class="icon icon-mail"></i>
+                        Email
+                    </a>
+                    <a href="dashboard-tasks.html" class="nav-item">
+                        <i class="icon icon-check-square"></i>
+                        Tasks
+                    </a>
+                    <a href="dashboard-calendar.html" class="nav-item active">
+                        <i class="icon icon-calendar"></i>
+                        Calendar
+                    </a>
+                    <a href="dashboard-notifications.html" class="nav-item">
+                        <i class="icon icon-bell"></i>
+                        Notifications
+                    </a>
+                    <a href="dashboard-settings.html" class="nav-item">
+                        <i class="icon icon-settings"></i>
+                        Settings
+                    </a>
+                </nav>
+                <div class="mt-auto pt-4">
+                    <button class="button button-outline w-full justify-start gap-3 text-muted-foreground">
+                        <i class="icon icon-log-out"></i>
+                        Log out
+                    </button>
+                </div>
+            </aside>
+            <main class="flex-1">
+                <div class="container py-6 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h1 class="text-3xl font-bold tracking-tight">Calendar</h1>
+                        <button class="button">
+                            <i class="icon icon-plus mr-2"></i> New Event
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="card md:col-span-1">
+                            <div class="card-content p-4">
+                                <div class="calendar-container border rounded-md p-2">
+                                    <!-- Simple calendar UI -->
+                                    <div class="calendar-header flex items-center justify-between mb-4">
+                                        <button class="button button-ghost button-sm button-icon">
+                                            <i class="icon icon-chevron-left"></i>
+                                        </button>
+                                        <h3 class="font-medium">March 2025</h3>
+                                        <button class="button button-ghost button-sm button-icon">
+                                            <i class="icon icon-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="calendar-weekdays grid grid-cols-7 text-center text-xs text-muted-foreground mb-2">
+                                        <div>Su</div>
+                                        <div>Mo</div>
+                                        <div>Tu</div>
+                                        <div>We</div>
+                                        <div>Th</div>
+                                        <div>Fr</div>
+                                        <div>Sa</div>
+                                    </div>
+                                    <div class="calendar-days grid grid-cols-7 gap-1">
+                                        <!-- Previous month days -->
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">23</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">24</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">25</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">26</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">27</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">28</button>
+                                        <!-- Current month days -->
+                                        <button class="calendar-day square-box">1</button>
+                                        <button class="calendar-day square-box">2</button>
+                                        <button class="calendar-day square-box">3</button>
+                                        <button class="calendar-day square-box">4</button>
+                                        <button class="calendar-day square-box">5</button>
+                                        <button class="calendar-day square-box">6</button>
+                                        <button class="calendar-day square-box">7</button>
+                                        <button class="calendar-day square-box">8</button>
+                                        <button class="calendar-day square-box">9</button>
+                                        <button class="calendar-day square-box">10</button>
+                                        <button class="calendar-day square-box">11</button>
+                                        <button class="calendar-day square-box">12</button>
+                                        <button class="calendar-day square-box">13</button>
+                                        <button class="calendar-day square-box">14</button>
+                                        <button class="calendar-day square-box">15</button>
+                                        <button class="calendar-day square-box">16</button>
+                                        <button class="calendar-day square-box">17</button>
+                                        <button class="calendar-day square-box">18</button>
+                                        <button class="calendar-day square-box">19</button>
+                                        <button class="calendar-day square-box">20</button>
+                                        <button class="calendar-day square-box">21</button>
+                                        <button class="calendar-day square-box">22</button>
+                                        <button class="calendar-day square-box">23</button>
+                                        <button class="calendar-day square-box">24</button>
+                                        <button class="calendar-day square-box">25</button>
+                                        <button class="calendar-day square-box bg-primary text-primary-foreground">26</button>
+                                        <button class="calendar-day square-box">27</button>
+                                        <button class="calendar-day square-box">28</button>
+                                        <button class="calendar-day square-box">29</button>
+                                        <button class="calendar-day square-box">30</button>
+                                        <button class="calendar-day square-box">31</button>
+                                        <!-- Next month days -->
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">1</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">2</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">3</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">4</button>
+                                        <button class="calendar-day square-box text-muted-foreground opacity-50">5</button>
+                                    </div>
+                                </div>
+                                <div class="mt-6 space-y-2">
+                                    <h3 class="font-medium">Upcoming Events</h3>
+                                    <div class="space-y-2">
+                                        <div class="text-sm p-2 border rounded-md">
+                                            <p class="font-medium">Team Standup</p>
+                                            <p class="text-xs text-muted-foreground">Mar 26 • 9:00 AM</p>
+                                        </div>
+                                        <div class="text-sm p-2 border rounded-md">
+                                            <p class="font-medium">Client Presentation</p>
+                                            <p class="text-xs text-muted-foreground">Mar 26 • 11:30 AM</p>
+                                        </div>
+                                        <div class="text-sm p-2 border rounded-md">
+                                            <p class="font-medium">Product Strategy</p>
+                                            <p class="text-xs text-muted-foreground">Mar 26 • 2:00 PM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card md:col-span-3">
+                            <div class="card-header p-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <button class="button button-outline button-sm" id="today-btn">
+                                            Today
+                                        </button>
+                                        <button class="button button-outline button-icon">
+                                            <i class="icon icon-chevron-left"></i>
+                                        </button>
+                                        <button class="button button-outline button-icon">
+                                            <i class="icon icon-chevron-right"></i>
+                                        </button>
+                                        <h2 class="text-lg font-semibold">Wednesday, March 26, 2025</h2>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <button class="button button-sm">Day</button>
+                                        <button class="button button-outline button-sm">Week</button>
+                                        <button class="button button-outline button-sm">Month</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content p-4">
+                                <div class="space-y-4">
+                                    <div class="flex border rounded-lg overflow-hidden">
+                                        <div class="w-2 bg-primary"></div>
+                                        <div class="flex-1 p-4">
+                                            <div class="flex items-start justify-between">
+                                                <div>
+                                                    <h3 class="font-medium">Team Standup</h3>
+                                                    <p class="text-sm text-muted-foreground">Daily team meeting</p>
+                                                </div>
+                                                <span class="badge bg-blue-100 text-blue-800">meeting</span>
+                                            </div>
+                                            <div class="mt-3 grid grid-cols-2 gap-2 text-sm">
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-clock"></i>
+                                                    <span>9:00 AM - 9:30 AM</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-users"></i>
+                                                    <span>8 participants</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-map-pin"></i>
+                                                    <span>Conference Room A</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex border rounded-lg overflow-hidden">
+                                        <div class="w-2 bg-primary"></div>
+                                        <div class="flex-1 p-4">
+                                            <div class="flex items-start justify-between">
+                                                <div>
+                                                    <h3 class="font-medium">Client Presentation</h3>
+                                                    <p class="text-sm text-muted-foreground">Presenting new project proposal</p>
+                                                </div>
+                                                <span class="badge bg-purple-100 text-purple-800">presentation</span>
+                                            </div>
+                                            <div class="mt-3 grid grid-cols-2 gap-2 text-sm">
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-clock"></i>
+                                                    <span>11:30 AM - 12:30 PM</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-users"></i>
+                                                    <span>5 participants</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-video"></i>
+                                                    <span>Zoom</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex border rounded-lg overflow-hidden">
+                                        <div class="w-2 bg-primary"></div>
+                                        <div class="flex-1 p-4">
+                                            <div class="flex items-start justify-between">
+                                                <div>
+                                                    <h3 class="font-medium">Product Strategy</h3>
+                                                    <p class="text-sm text-muted-foreground">Quarterly planning session</p>
+                                                </div>
+                                                <span class="badge bg-green-100 text-green-800">planning</span>
+                                            </div>
+                                            <div class="mt-3 grid grid-cols-2 gap-2 text-sm">
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-clock"></i>
+                                                    <span>2:00 PM - 4:00 PM</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-users"></i>
+                                                    <span>12 participants</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 text-muted-foreground">
+                                                    <i class="icon icon-map-pin"></i>
+                                                    <span>Conference Room B</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-container">
+            <div class="flex items-center gap-2 font-bold text-xl mb-8">
+                <span class="text-primary">Productivity</span>
+                <span>Assistant</span>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="icon icon-layout-dashboard"></i>
+                    Dashboard
+                </a>
+                <a href="dashboard-email.html" class="nav-item">
+                    <i class="icon icon-mail"></i>
+                    Email
+                </a>
+                <a href="dashboard-tasks.html" class="nav-item">
+                    <i class="icon icon-check-square"></i>
+                    Tasks
+                </a>
+                <a href="dashboard-calendar.html" class="nav-item active">
+                    <i class="icon icon-calendar"></i>
+                    Calendar
+                </a>
+                <a href="dashboard-notifications.html" class="nav-item">
+                    <i class="icon icon-bell"></i>
+                    Notifications
+                </a>
+                <a href="dashboard-settings.html" class="nav-item">
+                    <i class="icon icon-settings"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script src="calendar.js"></script>
+    <script src="dashboard.js"></script>
+   
+</body>
+</html>
