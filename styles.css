@@ -603,6 +603,21 @@ a {
   width: 2.5rem;
 }
 
+.button-logout{
+  background-color: #f2ebeb;
+  color: #ffffff;
+  padding: 0.6rem;
+  border: black; 
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  align-content: center;
+  margin-left: 15px;
+  inline-size: 140px;
+  margin-top: 500px;
+  background-color: #7c3aed;
+}
+
 .card {
   background-color: var(--background);
   border: 1px solid var(--border);
